@@ -1,7 +1,7 @@
 {
-  "name": "@mobilesoft/apps2cms-common",
+  "name": "@wymaze/apps2cms-common",
   "version": "1.0.1",
-  "description": "",
+  "description": "Common infra structure for the apps2cms project",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "files": [
