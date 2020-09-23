@@ -1,5 +1,7 @@
 export * from './errors'
 
+export * from './helpers'
+
 export * from './infra'
 
 export * from './middlewares'
