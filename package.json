@@ -1,6 +1,6 @@
 {
   "name": "@wymaze/apps2cms-common",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Common infra structure for the apps2cms project",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
