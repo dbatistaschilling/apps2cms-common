@@ -1,2 +1,3 @@
 export * from './database/IDatabase'
-export * from './database/IModelRepository'
+export * from './database/repository'
+export * from './encripter/IEncripter'
