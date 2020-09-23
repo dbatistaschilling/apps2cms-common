@@ -11,4 +11,4 @@ class DatabaseConnectionAdapter implements IDatabase {
   }
 }
 
-export default new DatabaseConnectionAdapter()
+export const mongoDbConnection = new DatabaseConnectionAdapter()
