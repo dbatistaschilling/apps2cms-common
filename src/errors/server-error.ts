@@ -2,14 +2,13 @@ import { CustomError } from "./custom-error"
 
 export class ServerError extends CustomError {
   statusCode = 500
-  reason = 'Server Error'
 
   constructor (public message: string) {
-    super('Server Error')
+    super(message)
     Object.setPrototypeOf(this, ServerError.prototype)
   }
 
   serializeErrors() {
-    return [{ message: this.reason }]
+    return [{ message: this.message }]
   }
 }
