@@ -53,6 +53,9 @@ export const hasAccess = (roles: string[]) => {
       }
 
       next()
-    } catch (err) {}
+    } catch (err) {
+      console.log(err)
+      res.send({})
+    }
   }
 }
