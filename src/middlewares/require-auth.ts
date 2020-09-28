@@ -1,13 +1,35 @@
+import jwt from 'jsonwebtoken'
 import { Request, Response, NextFunction } from 'express'
-import { NotAuthorizedError } from '../errors/not-authorized-error'
+import { NotAuthorizedError } from '../errors'
+
+type UserPayload = {
+  id: string
+  email: string
+}
+
+declare global {
+  namespace Express {
+    interface Request {
+      currentUser?: UserPayload
+    }
+  }
+}
 
 export const requireAuth = (req: Request, res: Response, next: NextFunction) => {
-  console.log(req.currentUser);
-  console.log(req.session);
-  
-  if (!req.currentUser) {
-    throw new NotAuthorizedError()
+  if (!req.session?.jwt) {
+    return next()
   }
-  
+
+  try {
+    const payload = jwt.verify(
+      req.session.jwt,
+      process.env.JWT_KEY!
+    ) as UserPayload
+    req.currentUser = payload
+    if (!req.currentUser) {
+      throw new NotAuthorizedError()
+    }
+  } catch (err) {}
+
   next()
 }
