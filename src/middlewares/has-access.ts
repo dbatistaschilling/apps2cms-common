@@ -41,6 +41,8 @@ export const hasAccess = (roles: string[]) => {
         console.log(role);
         
         if (!user.roles.includes(role)) {
+          console.log('aquiiiiiiiiiiiiiiii');
+          
           throw new NotAuthorizedError()
         }
       }
