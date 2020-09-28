@@ -8,6 +8,12 @@ export const adaptRoute = (controller: IController) => {
     }
     const httpResponse = await controller.handle(httpRequest)
     if (httpResponse.statusCode < 300) {
+      if (httpResponse.body.jwt) {
+        req.session = {
+          jwt: httpResponse.body.jwt
+        }
+        delete httpResponse.body.jwt
+      }
       res.status(httpResponse.statusCode).json(httpResponse.body)
     } else {
       next(httpResponse)
