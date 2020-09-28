@@ -28,7 +28,7 @@ export const hasAccess = (roles: string[]) => {
         process.env.JWT_KEY!
       ) as UserPayload
       req.currentUser = payload
-      const user = User.findOne({ email: req.currentUser!.email })
+      const user = User.findOne({ roles: { $in: roles } })
       console.log(roles)
       console.log(user);
       next()

@@ -26,17 +26,20 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
+    unique: true,
+    lowercase: true,
+    trim: true,
     required: true
   },
   password: {
     type: String,
     required: true
   },
-  roles: [{
-    type: String,
+  roles: {
+    type: [String],
     required: true,
     default: ['CLIENT']
-  }]
+  }
 }, {
   toJSON: {
     transform(doc, ret) {
