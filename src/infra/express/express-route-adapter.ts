@@ -1,18 +1,16 @@
 import { IController, IHttpRequest } from '../../protocols'
-import { Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express'
 
 export const adaptRoute = (controller: IController) => {
-  return async (req: Request, res: Response) => {
+  return async (req: Request, res: Response, next: NextFunction) => {
     const httpRequest: IHttpRequest = {
       body: req.body
     }
     const httpResponse = await controller.handle(httpRequest)
-    if (httpResponse.statusCode === 200) {
+    if (httpResponse.statusCode < 300) {
       res.status(httpResponse.statusCode).json(httpResponse.body)
     } else {
-      res.status(httpResponse.statusCode).json({
-        error: httpResponse.body.message
-      })
+      next(httpResponse)
     }
   }
 }

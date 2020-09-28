@@ -1,9 +1,9 @@
-export interface IEncripterInput {
+export interface ICompareInput {
   storedPassword: string
-  supliedPassword: string
+  suppliedPassword: string
 }
 
 export interface IEncripter {
   toHash: (password: string) => Promise<string>
-  compare: (dcryptData: IEncripterInput) => Promise<boolean>
+  compare: (dcryptData: ICompareInput) => Promise<boolean>
 }
