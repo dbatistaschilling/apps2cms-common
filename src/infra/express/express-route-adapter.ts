@@ -16,6 +16,7 @@ export const adaptRoute = (controller: IController) => {
       }
       if (httpResponse.body.signOut) {
         req.session = null
+        delete httpResponse.body.signOut
       }
       res.status(httpResponse.statusCode).json(httpResponse.body)
     } else {
