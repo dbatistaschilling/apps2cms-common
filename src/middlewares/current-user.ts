@@ -4,6 +4,7 @@ import { Request, Response, NextFunction } from 'express'
 type UserPayload = {
   id: string
   email: string
+  role: string
 }
 
 declare global {
