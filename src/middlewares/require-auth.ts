@@ -17,7 +17,7 @@ declare global {
 
 export const requireAuth = (req: Request, res: Response, next: NextFunction) => {
   if (!req.session?.jwt) {
-    return next()
+    throw new NotAuthorizedError()
   }
 
   try {
@@ -26,9 +26,7 @@ export const requireAuth = (req: Request, res: Response, next: NextFunction) => 
       process.env.JWT_KEY!
     ) as UserPayload
     req.currentUser = payload
-    if (!req.currentUser) {
-      throw new NotAuthorizedError()
-    }
+    console.log(req.currentUser)
   } catch (err) {}
 
   next()
