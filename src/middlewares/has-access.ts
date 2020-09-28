@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
 import { NotAuthorizedError } from '../errors'
-import { FindOneAdapter } from '../infra'
 import jwt from 'jsonwebtoken'
 import User from '../models/User'
 
