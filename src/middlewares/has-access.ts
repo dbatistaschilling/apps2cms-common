@@ -17,7 +17,7 @@ declare global {
 }
 
 export const hasAccess = (roles: string[]) => {
-  return (req: Request, res: Response, next: NextFunction) => {
+  return async (req: Request, res: Response, next: NextFunction) => {
     if (!req.session?.jwt) {
       throw new NotAuthorizedError()
     }
@@ -28,10 +28,19 @@ export const hasAccess = (roles: string[]) => {
         process.env.JWT_KEY!
       ) as UserPayload
       req.currentUser = payload
-      const user = User.findOne({ roles: { $in: roles } })
-      console.log(roles)
-      console.log(user);
-      next()
+
+      const user = await User.findOne({ email: req.currentUser.email })
+      if (!user) {
+        throw new NotAuthorizedError()
+      }
+
+      for (const role of roles) {
+        if (user.roles.includes(role)) {
+          next()
+        }
+      }
+
+      throw new NotAuthorizedError()
     } catch (err) {}
 
   }
