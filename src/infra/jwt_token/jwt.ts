@@ -3,10 +3,10 @@ import jwt from 'jsonwebtoken'
 
 export class JwtAdapter implements IToken {
   sign(signInput: ISignInput) {
-    const { id, email, secret_key } = signInput
+    const { id, email, secretKey } = signInput
     return jwt.sign({
       id,
       email
-    }, secret_key)
+    }, secretKey)
   }
 }

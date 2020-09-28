@@ -1,7 +1,7 @@
 export type ISignInput = {
   id: string
   email: string
-  secret_key: string
+  secretKey: string
 }
 
 export interface IToken {
