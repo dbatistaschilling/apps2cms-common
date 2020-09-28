@@ -34,16 +34,22 @@ export const hasAccess = (roles: string[]) => {
         throw new NotAuthorizedError()
       }
       
-      let notAllowed = false
-      for (const role of roles) {
-        if (!user.roles.includes(role)) {
-          notAllowed = true
-          break
+      if (roles) {
+        let notAllowed = false
+        for (const role of roles) {
+          if (!user.roles.includes(role)) {
+            console.log(role)
+            console.log(user.roles)
+            notAllowed = true
+            break
+          }
         }
-      }
-
-      if (notAllowed) {
-        throw new NotAuthorizedError()
+  
+        console.log('CHEGOOOOUUU')
+  
+        if (notAllowed) {
+          throw new NotAuthorizedError()
+        }
       }
 
       next()
