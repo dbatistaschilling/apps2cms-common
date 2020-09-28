@@ -16,7 +16,7 @@ declare global {
   }
 }
 
-export const hasAccess = (roles: string[]) => {
+export const hasAccess = (roles?: string[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     if (!req.session?.jwt) {
       throw new NotAuthorizedError()
