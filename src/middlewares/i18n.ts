@@ -1,9 +1,12 @@
 import i18n from 'i18n'
+import { Express } from 'express'
 
-i18n.configure({
-    locales: ['it','en'],
-    directory: __dirname + '/server/locales',
-    defaultLocale: 'it'
-})
+export const internalization = (app: Express) => {
+  i18n.configure({
+      locales: ['it','en'],
+      directory: __dirname + '/server/locales',
+      defaultLocale: 'it'
+  })
 
-export { i18n }
+  app.use(i18n.init)
+}
