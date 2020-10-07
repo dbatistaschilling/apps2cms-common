@@ -1,5 +1,3 @@
-import helmet from 'helmet'
+import helm from 'helmet'
 
-helmet({frameguard: {action: 'deny'}})
-
-export { helmet }
+export const helmet = helm({frameguard: {action: 'deny'}})
