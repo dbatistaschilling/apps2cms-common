@@ -1,6 +1,6 @@
 import favicon from 'serve-favicon'
 import path from 'path'
 
-favicon(path.join(__dirname, 'public', 'favicon.ico'))
-
-export { favicon }
+export const appIcon = () => {
+  favicon(path.join(__dirname, 'public', 'favicon.ico'))
+}
