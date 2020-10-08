@@ -3,7 +3,7 @@ import { IDatabase } from '../../utils'
 
 class DatabaseConnectionAdapter implements IDatabase {
   async connect (uri: string): Promise<any> {
-    return await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+    return await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
   }
 
   async disconnect (): Promise<void> {

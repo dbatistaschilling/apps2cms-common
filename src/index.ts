@@ -11,5 +11,3 @@ export * from './models'
 export * from './protocols'
 
 export * from './utils'
-
-export * from './test/setup'
