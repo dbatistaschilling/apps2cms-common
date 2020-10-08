@@ -3,7 +3,6 @@ import mongoose from 'mongoose'
 // import app from '../app'
 import request from 'supertest'
 import { Express } from 'express'
-import {} from 'jasmine'
 
 declare global {
   namespace NodeJS {
