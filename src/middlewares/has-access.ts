@@ -44,8 +44,7 @@ export const hasAccess = (roles?: string[]) => {
 
       next()
     } catch (err) {
-      console.log(err)
-      res.send({})
+      next(new NotAuthorizedError())
     }
   }
 }
